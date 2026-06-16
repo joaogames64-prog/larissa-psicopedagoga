@@ -374,8 +374,55 @@ section { padding: 96px 0; }
 }
 .stat span { font-size: .82rem; color: var(--gray-600); }
 
+/* ===================== GALERIA / ESPAÇO ===================== */
+#espaco { background: var(--gray-50); }
+
+.espaco-header { text-align: center; margin-bottom: 48px; }
+.espaco-header .section-sub { margin: 0 auto; }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  box-shadow: var(--shadow);
+  transition: all .3s ease;
+  background: var(--white);
+}
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+.gallery-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(4,75,171,0.9) 0%, rgba(4,75,171,0.4) 60%, transparent 100%);
+  padding: 32px 16px 20px;
+  color: var(--white);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: .95rem;
+  text-align: center;
+  transition: all .3s ease;
+}
+
 /* ===================== SERVIÇOS ===================== */
-#servicos { background: var(--gray-50); }
+#servicos { background: var(--white); }
 
 .servicos-header { text-align: center; margin-bottom: 56px; }
 .servicos-header .section-sub { margin: 0 auto; }
@@ -656,6 +703,7 @@ section { padding: 96px 0; }
 @media (max-width: 1024px) {
   .hero-inner { gap: 40px; }
   .sobre-inner { grid-template-columns: 340px 1fr; gap: 40px; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-social { grid-column: span 2; text-align: left; }
   .social-icons { justify-content: flex-start; }
@@ -734,6 +782,10 @@ section { padding: 96px 0; }
   }
   .stat span { font-size: .72rem; }
 
+  /* Galeria */
+  .espaco-header { margin-bottom: 32px; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
   /* Serviços */
   .cards-grid { grid-template-columns: 1fr; gap: 16px; }
   .card { text-align: left; padding: 28px 24px; }
@@ -798,6 +850,10 @@ section { padding: 96px 0; }
   .sobre-stats { gap: 12px; }
   .stat strong { font-size: 1.1rem; }
   .stat span { font-size: .68rem; }
+
+  /* Galeria */
+  .gallery-grid { grid-template-columns: 1fr; gap: 12px; }
+  .gallery-caption { padding: 20px 12px 14px; font-size: .88rem; }
 
   /* Cards */
   .card { padding: 24px 20px; }
