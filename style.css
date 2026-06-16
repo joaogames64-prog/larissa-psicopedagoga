@@ -629,45 +629,100 @@ section { padding: 96px 0; }
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 1024px) {
   .hero-inner { gap: 40px; }
-  .sobre-inner { grid-template-columns: 320px 1fr; gap: 48px; }
+  .sobre-inner { grid-template-columns: 300px 1fr; gap: 40px; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-social { grid-column: span 2; text-align: left; }
   .social-icons { justify-content: flex-start; }
+  .agendamento-inner { gap: 40px; }
 }
 
 @media (max-width: 768px) {
-  section { padding: 72px 0; }
+  section { padding: 64px 0; }
   nav, .nav-cta { display: none; }
   .hamburger { display: flex; }
 
-  .hero-inner { grid-template-columns: 1fr; gap: 48px; text-align: center; }
-  .hero-content p { margin: 0 auto 36px; }
+  /* Hero */
+  #hero { padding: 100px 0 60px; overflow: visible; }
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  .hero-content h2 { font-size: clamp(1.7rem, 6vw, 2.4rem); }
+  .hero-content p { margin: 0 auto 32px; max-width: 100%; }
   .hero-cta-group { align-items: center; }
+  .btn-gold { width: 100%; justify-content: center; padding: 16px 20px; font-size: .95rem; }
   .hero-image { order: -1; }
-  .hero-photo-wrap { width: 280px; }
-  .hero-card { left: 0; bottom: 16px; }
+  .hero-photo-wrap { width: min(260px, 72vw); }
+  .hero-card {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -20px;
+    white-space: nowrap;
+    animation: none;
+  }
 
-  .sobre-inner { grid-template-columns: 1fr; }
-  .sobre-photo-wrap { max-width: 320px; margin: 0 auto; }
+  /* Sobre */
+  .sobre-inner { grid-template-columns: 1fr; gap: 40px; }
+  .sobre-photo-wrap { max-width: 280px; margin: 0 auto; }
+  .sobre-photo-wrap::after { display: none; }
+  .sobre-stats { flex-wrap: wrap; gap: 20px; }
+  .stat { flex: 1 1 calc(33% - 20px); min-width: 80px; }
 
-  .cards-grid { grid-template-columns: 1fr; }
+  /* Serviços */
+  .cards-grid { grid-template-columns: 1fr; gap: 20px; }
 
-  .steps { grid-template-columns: 1fr; }
+  /* Como funciona */
+  .steps { grid-template-columns: 1fr; gap: 32px; }
   .steps::before { display: none; }
+  .step { text-align: left; display: flex; flex-direction: column; align-items: flex-start; }
+  .step-num { margin: 0 0 16px 0; }
 
-  .agendamento-inner { grid-template-columns: 1fr; }
+  /* Agendamento */
+  .agendamento-inner { grid-template-columns: 1fr; gap: 40px; }
 
-  .footer-inner { grid-template-columns: 1fr; text-align: left; }
-  .footer-social { grid-column: auto; }
-
-  .sobre-stats { flex-direction: column; gap: 20px; }
+  /* Footer */
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; text-align: left; }
+  .footer-social { grid-column: auto; text-align: left; }
+  .footer-links { text-align: left; }
+  .social-icons { justify-content: flex-start; }
+  .footer-brand p { max-width: 100%; }
 }
 
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
-  #hero { padding-top: 108px; }
-  .hero-photo-wrap { width: 240px; }
-  .btn-gold { font-size: .9rem; padding: 14px 24px; }
-  .card { padding: 28px 24px; }
-  .contact-info { padding: 28px 24px; }
+  section { padding: 56px 0; }
+
+  /* Header */
+  .logo-text h1 { font-size: .95rem; }
+  .logo-text span { font-size: .65rem; }
+  .logo-img { width: 36px; height: 36px; }
+
+  /* Hero */
+  #hero { padding: 96px 0 56px; }
+  .hero-photo-wrap { width: min(220px, 65vw); }
+  .hero-content h2 { font-size: clamp(1.55rem, 7vw, 2rem); }
+  .hero-card { font-size: .82rem; padding: 10px 14px; gap: 8px; }
+  .hero-card-icon { font-size: 1.2rem; }
+
+  /* Cards */
+  .card { padding: 24px 20px; }
+  .card h3 { font-size: 1.05rem; }
+
+  /* Steps */
+  .step { align-items: flex-start; }
+
+  /* Contact */
+  .contact-info { padding: 24px 20px; }
+  .contact-item-text span { font-size: .88rem; word-break: break-word; }
+
+  /* Footer */
+  .footer-inner { gap: 24px; }
+  .footer-bottom { font-size: .75rem; }
+
+  /* WhatsApp float */
+  .whatsapp-float { bottom: 20px; right: 16px; }
+  .whatsapp-btn { width: 52px; height: 52px; }
+  .whatsapp-btn svg { width: 26px; height: 26px; }
+  .whatsapp-tooltip { display: none; }
 }
