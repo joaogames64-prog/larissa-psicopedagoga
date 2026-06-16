@@ -319,37 +319,60 @@ section { padding: 96px 0; }
 #sobre { background: var(--white); }
 
 .sobre-inner {
-  max-width: 780px;
-  margin: 0 auto;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 64px;
+  align-items: center;
 }
 
-.sobre-content .section-label { margin-bottom: 12px; }
+.sobre-photo-wrap {
+  position: relative;
+}
+.sobre-photo-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 80%;
+  height: 80%;
+  border-radius: var(--radius-lg);
+  background: var(--primary-light);
+  z-index: 0;
+}
+.sobre-photo-wrap img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  aspect-ratio: 3/4;
+  box-shadow: var(--shadow-lg);
+}
+
+.sobre-content .section-label { margin-bottom: 8px; }
 .sobre-content .section-title { margin-bottom: 24px; }
-.sobre-content p { color: var(--gray-600); margin-bottom: 20px; font-size: 1.05rem; line-height: 1.8; text-align: center; }
+.sobre-content p { color: var(--gray-600); margin-bottom: 20px; font-size: 1rem; text-align: left; }
 .sobre-content p:last-child { margin-bottom: 0; }
 
 .sobre-stats {
   display: flex;
-  justify-content: center;
-  gap: 48px;
-  margin-top: 40px;
+  gap: 32px;
+  margin-top: 36px;
   padding-top: 32px;
   border-top: 1px solid var(--primary-light);
+  justify-content: flex-start;
 }
 .stat {
-  text-align: center;
+  text-align: left;
 }
 .stat strong {
   display: block;
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 800;
   color: var(--primary);
   font-family: 'Raleway', sans-serif;
-  line-height: 1.1;
-  margin-bottom: 6px;
 }
-.stat span { font-size: .88rem; color: var(--gray-600); font-weight: 500; }
+.stat span { font-size: .82rem; color: var(--gray-600); }
 
 /* ===================== SERVIÇOS ===================== */
 #servicos { background: var(--gray-50); }
@@ -632,6 +655,7 @@ section { padding: 96px 0; }
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 1024px) {
   .hero-inner { gap: 40px; }
+  .sobre-inner { grid-template-columns: 340px 1fr; gap: 40px; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-social { grid-column: span 2; text-align: left; }
   .social-icons { justify-content: flex-start; }
@@ -691,8 +715,10 @@ section { padding: 96px 0; }
   .hero-cta-note { justify-content: center; font-size: .78rem; }
 
   /* Sobre */
-  .sobre-inner { text-align: center; }
-  .sobre-content p { font-size: .92rem; }
+  .sobre-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+  .sobre-photo-wrap { max-width: 240px; margin: 0 auto; }
+  .sobre-photo-wrap::after { display: none; }
+  .sobre-content p { font-size: .92rem; text-align: center; }
   .sobre-stats {
     justify-content: center;
     flex-wrap: nowrap;
