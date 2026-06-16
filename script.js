@@ -166,3 +166,16 @@ setTimeout(() => {
   goTo(0);
   startAuto();
 })();
+
+/* ===================== TAGS "VER MAIS" ===================== */
+(function () {
+  const toggle = document.getElementById('sobreTagsToggle');
+  const tagsContainer = document.getElementById('sobreTags');
+  if (!toggle || !tagsContainer) return;
+
+  toggle.addEventListener('click', () => {
+    const expanded = tagsContainer.classList.toggle('expanded');
+    toggle.setAttribute('aria-expanded', expanded);
+    toggle.textContent = expanded ? '− ver menos' : '+ ver mais';
+  });
+})();
