@@ -713,6 +713,21 @@ section { padding: 96px 0; }
   border-bottom: 1px solid var(--primary-light);
 }
 .contact-item:last-child { border-bottom: none; }
+.contact-item--link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .2s ease;
+  border-radius: var(--radius);
+  margin: 0 -8px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.contact-item--link:hover {
+  background: var(--primary-light);
+}
+.contact-item--link:hover .contact-item-text span {
+  color: var(--primary);
+}
 .contact-item-icon {
   width: 44px; height: 44px;
   border-radius: 12px;
