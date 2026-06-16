@@ -95,3 +95,74 @@ setTimeout(() => {
     el.classList.add('visible');
   });
 }, 100);
+
+/* ===================== CAROUSEL ===================== */
+(function () {
+  const track   = document.getElementById('carouselTrack');
+  const prev    = document.getElementById('carouselPrev');
+  const next    = document.getElementById('carouselNext');
+  const dots    = document.querySelectorAll('.carousel-dot');
+  const slides  = document.querySelectorAll('.carousel-slide');
+  const total   = slides.length;
+  let current   = 0;
+  let autoTimer = null;
+  const DELAY   = 3800; // ms between slides
+
+  function goTo(index) {
+    // bounds wrap
+    current = (index + total) % total;
+
+    // move track
+    track.style.transform = `translateX(-${current * 100}%)`;
+
+    // active class on slide (for subtle zoom)
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+
+    // update dots
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function startAuto() {
+    autoTimer = setInterval(() => goTo(current + 1), DELAY);
+  }
+
+  function stopAuto() {
+    clearInterval(autoTimer);
+  }
+
+  // Arrow buttons
+  prev.addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
+  next.addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+
+  // Dot buttons
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      stopAuto();
+      goTo(parseInt(dot.dataset.index));
+      startAuto();
+    });
+  });
+
+  // Pause on hover
+  const wrapper = document.querySelector('.carousel-wrapper');
+  wrapper.addEventListener('mouseenter', stopAuto);
+  wrapper.addEventListener('mouseleave', startAuto);
+
+  // Touch / swipe support
+  let touchStartX = 0;
+  wrapper.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].clientX;
+  }, { passive: true });
+  wrapper.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      stopAuto();
+      goTo(diff > 0 ? current + 1 : current - 1);
+      startAuto();
+    }
+  }, { passive: true });
+
+  // Init
+  goTo(0);
+  startAuto();
+})();

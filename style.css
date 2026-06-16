@@ -380,46 +380,106 @@ section { padding: 96px 0; }
 .espaco-header { text-align: center; margin-bottom: 48px; }
 .espaco-header .section-sub { margin: 0 auto; }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.gallery-item {
+/* Carousel */
+.carousel-wrapper {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  aspect-ratio: 3/4;
-  box-shadow: var(--shadow);
-  transition: all .3s ease;
-  background: var(--white);
-}
-.gallery-item:hover {
-  transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
+  max-width: 680px;
+  margin: 0 auto;
+  user-select: none;
 }
-.gallery-item img {
+
+.carousel-track {
+  display: flex;
+  transition: transform .6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+.carousel-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .5s ease;
+  display: block;
+  transition: transform .6s ease;
 }
-.gallery-item:hover img {
-  transform: scale(1.05);
+.carousel-slide.active img {
+  transform: scale(1.03);
 }
-.gallery-caption {
+
+.carousel-caption {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(4,75,171,0.9) 0%, rgba(4,75,171,0.4) 60%, transparent 100%);
-  padding: 32px 16px 20px;
+  background: linear-gradient(to top, rgba(4,75,171,0.88) 0%, rgba(4,75,171,0.3) 60%, transparent 100%);
+  padding: 40px 20px 24px;
   color: var(--white);
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
-  font-size: .95rem;
+  font-size: 1.05rem;
   text-align: center;
+  letter-spacing: .03em;
+}
+
+/* Arrows */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.92);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--primary);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  transition: all .2s ease;
+  z-index: 10;
+}
+.carousel-btn:hover {
+  background: var(--white);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  transform: translateY(-50%) scale(1.08);
+}
+.carousel-prev { left: 16px; }
+.carousel-next { right: 16px; }
+
+/* Dots */
+.carousel-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  padding: 0;
   transition: all .3s ease;
 }
+.carousel-dot.active {
+  background: var(--white);
+  width: 24px;
+  border-radius: 4px;
+}
+
 
 /* ===================== SERVIÇOS ===================== */
 #servicos { background: var(--white); }
@@ -703,7 +763,7 @@ section { padding: 96px 0; }
 @media (max-width: 1024px) {
   .hero-inner { gap: 40px; }
   .sobre-inner { grid-template-columns: 340px 1fr; gap: 40px; }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .carousel-wrapper { max-width: 520px; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-social { grid-column: span 2; text-align: left; }
   .social-icons { justify-content: flex-start; }
@@ -782,9 +842,8 @@ section { padding: 96px 0; }
   }
   .stat span { font-size: .72rem; }
 
-  /* Galeria */
   .espaco-header { margin-bottom: 32px; }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .carousel-btn { width: 36px; height: 36px; }
 
   /* Serviços */
   .cards-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -852,8 +911,8 @@ section { padding: 96px 0; }
   .stat span { font-size: .68rem; }
 
   /* Galeria */
-  .gallery-grid { grid-template-columns: 1fr; gap: 12px; }
-  .gallery-caption { padding: 20px 12px 14px; font-size: .88rem; }
+  .carousel-btn { width: 32px; height: 32px; }
+  .carousel-caption { padding: 28px 12px 16px; font-size: .9rem; }
 
   /* Cards */
   .card { padding: 24px 20px; }
