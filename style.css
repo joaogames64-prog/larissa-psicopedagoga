@@ -663,30 +663,35 @@ section { padding: 96px 0; }
   }
 
   /* Sobre */
-  .sobre-inner { grid-template-columns: 1fr; gap: 40px; }
+  .sobre-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
   .sobre-photo-wrap { max-width: 280px; margin: 0 auto; }
   .sobre-photo-wrap::after { display: none; }
-  .sobre-stats { flex-wrap: wrap; gap: 20px; }
+  .sobre-stats { justify-content: center; flex-wrap: wrap; gap: 20px; }
   .stat { flex: 1 1 calc(33% - 20px); min-width: 80px; }
 
   /* Serviços */
   .cards-grid { grid-template-columns: 1fr; gap: 20px; }
+  .card { text-align: center; }
+  .card-icon { margin: 0 auto 20px; }
 
   /* Como funciona */
-  .steps { grid-template-columns: 1fr; gap: 32px; }
+  .steps { grid-template-columns: 1fr; gap: 36px; }
   .steps::before { display: none; }
-  .step { text-align: left; display: flex; flex-direction: column; align-items: flex-start; }
-  .step-num { margin: 0 0 16px 0; }
+  .step { text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .step-num { margin: 0 auto 16px; }
 
   /* Agendamento */
-  .agendamento-inner { grid-template-columns: 1fr; gap: 40px; }
+  .agendamento-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .agendamento-content p { max-width: 100%; }
+  .agendamento-content .hero-cta-group { align-items: center; }
 
   /* Footer */
-  .footer-inner { grid-template-columns: 1fr; gap: 32px; text-align: left; }
-  .footer-social { grid-column: auto; text-align: left; }
-  .footer-links { text-align: left; }
-  .social-icons { justify-content: flex-start; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+  .footer-brand { display: flex; flex-direction: column; align-items: center; }
   .footer-brand p { max-width: 100%; }
+  .footer-social { grid-column: auto; text-align: center; }
+  .footer-links { text-align: center; }
+  .social-icons { justify-content: center; }
 }
 
 @media (max-width: 480px) {
@@ -710,10 +715,10 @@ section { padding: 96px 0; }
   .card h3 { font-size: 1.05rem; }
 
   /* Steps */
-  .step { align-items: flex-start; }
+  .step { align-items: center; }
 
   /* Contact */
-  .contact-info { padding: 24px 20px; }
+  .contact-info { padding: 24px 20px; text-align: left; }
   .contact-item-text span { font-size: .88rem; word-break: break-word; }
 
   /* Footer */
@@ -723,6 +728,6 @@ section { padding: 96px 0; }
   /* WhatsApp float */
   .whatsapp-float { bottom: 20px; right: 16px; }
   .whatsapp-btn { width: 52px; height: 52px; }
-  .whatsapp-btn svg { width: 26px; height: 26px; }
+  .whatsapp-btn svg, .whatsapp-btn img { width: 26px; height: 26px; }
   .whatsapp-tooltip { display: none; }
 }
